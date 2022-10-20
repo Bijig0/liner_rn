@@ -1,0 +1,5 @@
+{
+  "compilerOptions": { "strict": true, "types": ["jest", "node"] },
+  "extends": "expo/tsconfig.base",
+  "include": ["__tests__/*.ts","__tests__/*.tsx"]
+}

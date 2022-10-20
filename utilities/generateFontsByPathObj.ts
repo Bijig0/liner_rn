@@ -1,0 +1,14 @@
+const generateFontsByPathObj = (
+  fonts: readonly Font[],
+  baseAssetsPath: string,
+  extension: string = "ttf"
+) => {
+  const obj = {};
+  fonts.map((font: Font) => {
+    obj[font] = require(`../assets/fonts/DMSans-Regular.ttf`);
+    console.log(require(`../assets/fonts/DMSans-Regular.ttf`));
+  });
+  return obj;
+};
+
+export default generateFontsByPathObj;
