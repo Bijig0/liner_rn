@@ -1,7 +1,7 @@
 import { Text, View, FlatList, SectionList, StyleSheet } from "react-native";
 import tw from "./lib/tailwind";
 import { useFonts } from "expo-font";
-import Header from "./components/Header";
+import Header from "./components/Heading";
 import AppBox from "./components/AppBox";
 import globalFonts from "./constants/fonts";
 import RestaurantCard from "./components/RestaurantCard";
@@ -12,6 +12,15 @@ import SearchField from "./components/SearchField";
 import SubHeader from "./components/SubHeader";
 import sectionData from "./mock_data/sections";
 import Footer from "./components/Footer";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Home from "./screens/Home";
+import Test from "./screens/Test";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import HomeIcon from "./assets/svgs/HomeIcon.svg";
+import SearchIcon from "./assets/svgs/SearchIcon.svg";
+import TechIcon from "./assets/svgs/TechIcon.svg";
+
 // import generateFontsByPathObj from "./utilities/generateFontsByPathObj";
 
 const baseAssetsPath = "./assets/fonts";
@@ -65,6 +74,9 @@ export default function App() {
     );
   };
 
+  const Stack = createNativeStackNavigator();
+  const Tab = createBottomTabNavigator();
+
   if (!fontsLoaded) {
     return (
       <Text style={tw`flex-1 justify-center items-center`}>Not loaded yet</Text>
@@ -72,22 +84,23 @@ export default function App() {
   }
 
   return (
-    <View style={tw`flex-1 bg-black`}>
-      <AppBox style={tw`flex-1 p-14`}>
-        <Header style={tw`flex-grow-0`} />
-        <SearchField style={tw`flex-grow-0`} />
-        <SectionList
-          style={tw`overflow-x-visible`}
-          sections={sectionData}
-          renderSectionHeader={({ section: { title } }) => {
-            return <SubHeader style={tw`flex-grow-0`} name={title} />;
-          }}
-          renderItem={renderSection}
-          stickySectionHeadersEnabled={false}
-        />
-        <Footer/>
-      </AppBox>
-    </View>
+    <NavigationContainer>
+      {/* <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Test" component={Test} />
+      </Stack.Navigator> */}
+      <Tab.Navigator
+        tabBar={Footer}
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Test" component={Test} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
