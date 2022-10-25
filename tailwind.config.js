@@ -9,6 +9,7 @@ var satisfiez = function () {
         return u;
     };
 };
+var mainBtnSize = "103px";
 module.exports = {
     theme: {
         extend: {
@@ -36,31 +37,40 @@ module.exports = {
                 "primary-medium": "DMSans-Medium",
                 "primary-medium-italic": "DMSans-MediumItalic"
             }),
-            width: {
-                card: "260px",
-                // This should reference main-btn as well :/
-                pill: "103px",
-                "main-btn": "103px",
-                "svg-icon": "10px"
+            width: function (_a) {
+                var theme = _a.theme;
+                return ({
+                    card: "260px",
+                    pill: mainBtnSize,
+                    "main-btn": mainBtnSize,
+                    "svg-icon": "10px"
+                });
             },
             height: {
                 card: "193px",
                 "card-img": "134px",
                 "main-btn": "50px",
                 pill: "32px",
-                "svg-icon": "10px"
+                "svg-icon": "10px",
+                footer: "5rem"
             },
             padding: {
                 card: "0.5rem",
-                "search-bar": "12px"
+                "search-bar": "12px",
+                "app-box": "2rem"
             },
             margin: {
                 "search-bar": "24px"
             },
-            inset: {
-                // Make this reference padding.card idk
-                // using theme() doesn't seem t work
-                pill: "0.5rem"
+            inset: function (_a) {
+                var theme = _a.theme;
+                return ({
+                    pill: theme("padding.card"),
+                    "app-box": theme("padding.app-box")
+                });
+            },
+            aspectRatio: {
+                1: 1
             }
         }
     },
@@ -68,11 +78,14 @@ module.exports = {
         plugin(function (_a) {
             var addUtilities = _a.addUtilities;
             addUtilities({
-                btn: {
-                    padding: 3,
-                    borderRadius: 10,
-                    textTransform: "uppercase",
-                    backgroundColor: "#333"
+                "translate-x-1/4": {
+                    transform: [{ translateY: 25 }]
+                },
+                "resize-contain": {
+                    resizeMode: "contain"
+                },
+                "resize-cover": {
+                    resizeMode: "cover"
                 },
                 "resize-repeat": {
                     resizeMode: "repeat"

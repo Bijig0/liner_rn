@@ -8,3 +8,15 @@ declare global {
 }
 
 
+
+declare global {
+  type RestaurantDetails = {
+    restaurantName: string;
+    joined: boolean;
+  };
+  type Restaurant = {
+    position: number;
+    title: string;
+    data: Array<Array<RestaurantDetails>>;
+  };
+}

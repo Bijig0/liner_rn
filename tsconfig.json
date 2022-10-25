@@ -1,5 +1,16 @@
 {
-  "compilerOptions": { "strict": true, "types": ["jest", "node"] },
-  "extends": "expo/tsconfig.base",
-  "include": ["__tests__/*.ts","__tests__/*.tsx"]
+  "compilerOptions": {
+    "strict": true,
+    "types": ["jest", "node"]
+  },
+  "exclude": [
+    "typings/browser.d.ts",
+    "typings/browser",
+    "node_modules/",
+    "node_modules/@react-navigation/core/lib/typescript/src/types.d.ts",
+    "expo/tsconfig.base",
+    "typings"
+  ],
+  "include": ["__tests__/*.ts", "__tests__/*.tsx"],
+  "extends": "expo/tsconfig.base"
 }

@@ -1,39 +1,47 @@
 import { View, Text, TouchableOpacity, Pressable } from "react-native";
 import React from "react";
-import SearchIcon from "../assets/svgs/SearchIcon.svg";
-import TechIcon from "../assets/svgs/TechIcon.svg";
-import HomeIcon from "../assets/svgs/HomeIcon.svg";
-import tw from "../lib/tailwind";
+import RawSearchIcon from "../../assets/svgs/SearchIcon.svg";
+import RawTechIcon from "../../assets/svgs/TechIcon.svg";
+import RawHomeIcon from "../../assets/svgs/HomeIcon.svg";
+import tw from "../../lib/tailwind";
+import { TabActions } from "@react-navigation/native";
 
 type Props = {
   navigation?: any;
 };
 
 const Footer = (props: Props) => {
+  const jumpToHome = TabActions.jumpTo("Home");
+  const jumpToMyQueues = TabActions.jumpTo("MyQueues");
+  const jumpToMyProfile = TabActions.jumpTo("Profile");
+
   const footerIcons = [
     {
       position: 1,
-      Icon: HomeIcon,
+      Icon: RawHomeIcon,
       onPress: () => {
-        props.navigation.navigate("Home");
+        props.navigation.dispatch(jumpToHome);
       },
     },
     {
       position: 2,
-      Icon: SearchIcon,
+      Icon: RawSearchIcon,
       onPress: () => {
-        props.navigation.navigate("Test");
+        props.navigation.dispatch(jumpToMyProfile);
       },
     },
     {
       position: 3,
-      Icon: TechIcon,
+      Icon: RawTechIcon,
+      onPress: () => {
+        props.navigation.dispatch(jumpToMyQueues);
+      },
     },
   ];
-    return (
+  return (
     //   ALL ELEMENTS ARE BOX-SIZING BORDER-BOX BY DEFAULT, AND CANT CHANGE THAT DEFAULT :(
     //   Adjust the height of this parent
-    <View style={tw`h-20 absolute inset-x-0 bottom-0`}>
+    <View style={tw`h-footer absolute inset-x-0 bottom-0`}>
       {/* And padding of this bottom one, if you wanna adjust positioning */}
       <View
         style={tw`flex-row h-full pb-6 bg-black items-center justify-evenly border-t border-solid border-grey-regular`}

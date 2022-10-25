@@ -1,25 +1,16 @@
 import { Text, View, FlatList, SectionList, StyleSheet } from "react-native";
 import tw from "./lib/tailwind";
 import { useFonts } from "expo-font";
-import Header from "./components/Heading";
-import AppBox from "./components/AppBox";
-import globalFonts from "./constants/fonts";
-import RestaurantCard from "./components/RestaurantCard";
-import MainButton from "./components/MainButton";
 import React from "react";
-import data from "./mock_data/data";
-import SearchField from "./components/SearchField";
-import SubHeader from "./components/SubHeader";
-import sectionData from "./mock_data/sections";
-import Footer from "./components/Footer";
+import Footer from "./components/generic_components/Footer";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/Home";
-import Test from "./screens/Test";
+import Profile from "./screens/Profile";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeIcon from "./assets/svgs/HomeIcon.svg";
-import SearchIcon from "./assets/svgs/SearchIcon.svg";
-import TechIcon from "./assets/svgs/TechIcon.svg";
+import MyQueuesScreen from "./screens/MyQueues";
+import QueueDetails from "./components/QueueDetailsContainer";
+import AppProvider from "./components/AppContext";
+import RestaurantDetails from "./screens/RestaurantDetails";
 
 // import generateFontsByPathObj from "./utilities/generateFontsByPathObj";
 
@@ -62,20 +53,7 @@ export default function App() {
   };
   const [fontsLoaded] = useFonts(fonts_by_path);
 
-  const renderSection = ({ item: { restaurants } }) => {
-    const restaurantsCopy = restaurants;
-    return (
-      <FlatList
-        style={tw`flex-grow-0 mb-search-bar overflow-x-visible`}
-        horizontal={true}
-        data={restaurantsCopy}
-        renderItem={({ item }) => <RestaurantCard restaurantName={item} />}
-      ></FlatList>
-    );
-  };
-
-  const Stack = createNativeStackNavigator();
-  const Tab = createBottomTabNavigator();
+  const Tab = createBottomTabNavigator<AppParamList>();
 
   if (!fontsLoaded) {
     return (
@@ -84,23 +62,32 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      {/* <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{ headerShown: false }}
-      >
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Test" component={Test} />
-      </Stack.Navigator> */}
-      <Tab.Navigator
-        tabBar={Footer}
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Test" component={Test} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <React.StrictMode>
+      <AppProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+            tabBar={Footer}
+            screenOptions={{
+              headerShown: false,
+              lazy: false,
+            }}
+            backBehavior="order"
+          >
+            <Tab.Screen name="Home" component={Home} navigationKey="Home-1" />
+            <Tab.Screen
+              name="MyQueues"
+              component={MyQueuesScreen}
+              navigationKey="MyQueues"
+            />
+            <Tab.Screen
+              name="RestaurantDetails"
+              component={RestaurantDetails}
+              initialParams={{ type: "none" }}
+            ></Tab.Screen>
+            <Tab.Screen name="Profile" component={Profile} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </AppProvider>
+    </React.StrictMode>
   );
 }
