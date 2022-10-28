@@ -29,6 +29,8 @@ const SearchField = (props: Props) => {
       <TextInput
         onChangeText={(newText: string) => {
           context.setTextToFilterBy(newText);
+          // context.filterBy("restaurantName", (rName) => rName.includes(newText))
+          
         }}
         value={context.textToFilterBy}
         placeholderTextColor={props.placeholderColor ?? grey}

@@ -12,9 +12,7 @@ type TAppContext = {
   setJoinedRestaurants: React.Dispatch<React.SetStateAction<string[]>>;
   restaurantsToDisplay: readonly Restaurant[];
   textToFilterBy: string;
-  setTextToFilterBy: React.Dispatch<
-    React.SetStateAction<string>
-  >;
+  setTextToFilterBy: React.Dispatch<React.SetStateAction<string>>;
 };
 
 // Fix your architecture for this. This means that for every filter you need to add a new thing
@@ -22,30 +20,28 @@ type TAppContext = {
 
 export const AppContext = createContext<TAppContext>({} as TAppContext);
 
+//  
+
 const AppProvider = (props) => {
   const [unmodifiedRestaurants, setUnmodifiedRestaurants] =
     useState<readonly Restaurant[]>(sectionData);
   const [joinedRestaurants, setJoinedRestaurants] = useState<string[]>([]);
   const [textToFilterBy, setTextToFilterBy] = useState("");
-  
 
   // The empty array as second argument should be the joined restaurants we have in the provider
-
-
 
   const filteredRestaurantsByJoined = filterRestauransByJoined(
     unmodifiedRestaurants,
     joinedRestaurants
   );
 
-  const filteredRestaurantsByInput = filterRestaurantsByInput(filteredRestaurantsByJoined, textToFilterBy)
-
-  const restaurantsToDisplay = filteredRestaurantsByInput
-  
-
-
+  const filteredRestaurantsByInput = filterRestaurantsByInput(
+    filteredRestaurantsByJoined,
+    textToFilterBy
+  );
   // Use some sort of function composition here to put everything through every filter
   // Then display that final thing :)
+  const restaurantsToDisplay = filteredRestaurantsByInput;
 
   // console.log(filteredRestaurantsByJoined[0].data)
 
@@ -65,7 +61,6 @@ const AppProvider = (props) => {
         restaurantsToDisplay,
         textToFilterBy,
         setTextToFilterBy,
-
       }}
     >
       {props.children}
