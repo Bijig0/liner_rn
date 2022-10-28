@@ -10,7 +10,7 @@ const HomeHeader = (props: Props) => {
   return (
     <View>
           <HomeHeading />
-          <SearchField style={tw`flex-grow-0`} />
+          <SearchField key={1} style={tw`flex-grow-0`} />
     </View>
   );
 };

@@ -1,5 +1,5 @@
 import symmetricDifference from "../symmetricDifference/symmetricDifference";
-import fn from './helper'
+import filterIndividualSectionByJoined from "./helper";
 
 const filterRestaurantsByJoinedByJoined = (
   restaurantsToFilter: any,
@@ -7,13 +7,15 @@ const filterRestaurantsByJoinedByJoined = (
 ) => {
   let filteredRestaurantsByJoined: any = [];
   for (const section of restaurantsToFilter) {
-      const [restaurants] = section.data;
+    const [restaurants] = section.data;
     //   restaurants is the object
     filteredRestaurantsByJoined = [
       ...filteredRestaurantsByJoined,
       {
         ...section,
-        data: [fn(restaurants, restaurantsToFilterBy)],
+        data: [
+          filterIndividualSectionByJoined(restaurants, restaurantsToFilterBy),
+        ],
       },
     ];
   }

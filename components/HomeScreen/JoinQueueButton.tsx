@@ -11,20 +11,18 @@ type Props = {
 const JoinQueueButton = (props: Props) => {
   const context = useContext(AppContext);
   const navigation = useNavigation();
-  const [pressed, setPressed] = useState(false);
+  // const [pressed, setPressed] = useState(false);
   const pressedButton = (
     <Button
       onPress={() => {
         // async to make animations smooth
-        setTimeout(() => {
-          context.setJoinedRestaurants((prevRestaurants) => {
-            return prevRestaurants.filter(
-              (restaurant) => restaurant !== props.buttonProps.restaurantName
-            );
-          });
-        }, 100);
+        context.setJoinedRestaurants((prevRestaurants) => {
+          return prevRestaurants.filter(
+            (restaurant) => restaurant !== props.buttonProps.restaurantName
+          );
+        });
 
-        setPressed(false);
+        // setPressed(false);
       }}
       style="border-2 border-success bg-white"
       textColor="text-success"
@@ -55,17 +53,19 @@ const JoinQueueButton = (props: Props) => {
 
         navigation.navigate("RestaurantDetails", {
           restaurantName: props.buttonProps.restaurantName,
-          setPressed: setPressed,
-          type: 'joinQueue'
+          // setPressed: setPressed,
+          type: "queueDetails",
         });
 
-        setPressed(true);
+        // setPressed(true);
       }}
       bgColor="bg-success"
       text="Queue"
     />
   );
-  return pressed ? pressedButton : nonPressedButton;
+  // const selected = pressed || props.buttonProps.joined;
+  // return pressed ? pressedButton : nonPressedButton;
+  return props.buttonProps.joined ? pressedButton : nonPressedButton;
 };
 
 export default JoinQueueButton;

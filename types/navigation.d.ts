@@ -1,6 +1,8 @@
-export {};
+import { NavigatorScreenParams } from '@react-navigation/native';
+
+export { };
 // change joinQueue to restaurantDetails
-type CardViewType = "queueDetails" | "restaurantDetails" | "joinQueue" | "none";
+type CardViewType = "queueDetails" | "restaurantDetails" | "none";
 
 declare global {
   type QueueDetailsParams = {
@@ -16,6 +18,7 @@ type TRootParamList = {
   MyQueues: undefined;
   RestaurantDetails: QueueDetailsParams | undefined;
   Profile: undefined;
+  RestaurantList: undefined,
 };
 
 declare global {

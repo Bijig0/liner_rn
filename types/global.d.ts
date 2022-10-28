@@ -7,8 +7,6 @@ declare global {
   type Font = typeof fonts[number];
 }
 
-
-
 declare global {
   type RestaurantDetails = {
     restaurantName: string;

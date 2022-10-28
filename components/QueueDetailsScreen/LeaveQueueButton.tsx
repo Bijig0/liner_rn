@@ -32,10 +32,9 @@ const LeaveQueueButton = (props: Props) => {
               (restaurant) => restaurant !== route.params?.restaurantName
             )
           );
-        }, 100);
-        route.params?.setPressed((prevPressed) => !prevPressed);
+        }, 0);
 
-        navigation.dispatch(jumpToHome);
+        navigation.goBack();
       }}
       text="Leave"
       bgColor="bg-warning"

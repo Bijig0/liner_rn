@@ -4,13 +4,13 @@ import { useFonts } from "expo-font";
 import React from "react";
 import Footer from "./components/generic_components/Footer";
 import { NavigationContainer } from "@react-navigation/native";
-import Home from "./screens/Home";
 import Profile from "./screens/Profile";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MyQueuesScreen from "./screens/MyQueues";
 import QueueDetails from "./components/QueueDetailsContainer";
 import AppProvider from "./components/AppContext";
 import RestaurantDetails from "./screens/RestaurantDetails";
+import Home from "./screens/Home";
 
 // import generateFontsByPathObj from "./utilities/generateFontsByPathObj";
 
@@ -73,7 +73,11 @@ export default function App() {
             }}
             backBehavior="order"
           >
-            <Tab.Screen name="Home" component={Home} navigationKey="Home-1" />
+            <Tab.Screen
+              name="Home"
+              component={Home}
+              navigationKey="Home-1"
+            />
             <Tab.Screen
               name="MyQueues"
               component={MyQueuesScreen}

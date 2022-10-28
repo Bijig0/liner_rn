@@ -14,7 +14,7 @@ const data = [
   },
 ];
 
-const fn = (data: any, joinedRestaurants: any) => {
+const filterIndividualSectionByJoined = (data: any, joinedRestaurants: any) => {
   let newData = [] as any;
   for (const restaurant of data) {
     const { restaurantName } = restaurant;
@@ -29,4 +29,4 @@ const fn = (data: any, joinedRestaurants: any) => {
 
 // console.log(fn(data, ["Sushi Jiro"]));
 
-export default fn
+export default filterIndividualSectionByJoined;

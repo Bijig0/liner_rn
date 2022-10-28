@@ -29,7 +29,7 @@ const RestaurantDetails = (props: Props) => {
         wrapper={(children: React.ReactNode) => (
           <QueueDetailsContainer>{children}</QueueDetailsContainer>
         )}
-        condition={props.route.params.type === "joinQueue"}
+        condition={props.route.params.type === "queueDetails"}
       >
         {RestaurantDetails}
       </ConditionalWrapper>
