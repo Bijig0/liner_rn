@@ -6,9 +6,8 @@
     "module": "commonjs",
     "outDir": "out/out",
     "sourceMap": true,
-    "paths": {
-        "shared/*": ["../types/*"]
-    }
+    "jsx": "react-native",
+    "esModuleInterop": true
   },
-  "include": ["../types/*"]
+  "include": ["../types/global.d.ts", "./**/*"]
 }
