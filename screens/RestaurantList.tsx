@@ -22,6 +22,7 @@ import HomeHeader from "../components/HomeScreen/HomeHeader";
 import BottomScreenPadding from "../components/generic_components/BottomScreenPadding";
 import { useNavigation, useNavigationState } from "@react-navigation/native";
 import { AppContext } from "../components/AppContext";
+import Header from '../components/Header'
 
 type Props = {
   navigation: any;
@@ -32,7 +33,6 @@ const RestaurantList = (props: Props) => {
   const data = context.restaurantsToDisplay;
   const navigation = useNavigation();
   // console.log(useNavigationState((select) => select));
-  console.log("render");
 
   // const context = useContext(AppContext);
   // const restaurants = context.filteredRestaurantsByJoined;

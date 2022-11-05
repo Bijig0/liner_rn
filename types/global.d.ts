@@ -1,4 +1,3 @@
-export {};
 
 import fonts, { mainFont } from "../constants/fonts";
 
@@ -18,3 +17,5 @@ declare global {
     data: Array<Array<RestaurantDetails>>;
   };
 }
+
+export {Font}

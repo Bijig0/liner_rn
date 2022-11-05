@@ -1,6 +1,5 @@
 import { NavigatorScreenParams } from '@react-navigation/native';
 
-export { };
 // change joinQueue to restaurantDetails
 type CardViewType = "queueDetails" | "restaurantDetails" | "none";
 
@@ -30,3 +29,5 @@ declare global {
     interface RootParamList extends TRootParamList {}
   }
 }
+
+export {AppParamList}

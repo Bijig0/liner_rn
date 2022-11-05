@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, memo } from "react";
 import Button from "../generic_components/Button";
 import { useNavigation } from "@react-navigation/native";
 import { AppContext } from "../../components/AppContext";
@@ -16,11 +16,13 @@ const JoinQueueButton = (props: Props) => {
     <Button
       onPress={() => {
         // async to make animations smooth
-        context.setJoinedRestaurants((prevRestaurants) => {
-          return prevRestaurants.filter(
-            (restaurant) => restaurant !== props.buttonProps.restaurantName
-          );
-        });
+        setTimeout(() => {
+          context.setJoinedRestaurants((prevRestaurants) => {
+            return prevRestaurants.filter(
+              (restaurant) => restaurant !== props.buttonProps.restaurantName
+            );
+          });
+        }, 0);
 
         // setPressed(false);
       }}
@@ -68,4 +70,4 @@ const JoinQueueButton = (props: Props) => {
   return props.buttonProps.joined ? pressedButton : nonPressedButton;
 };
 
-export default JoinQueueButton;
+export default memo(JoinQueueButton);

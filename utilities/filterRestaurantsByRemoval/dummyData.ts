@@ -1,3 +1,4 @@
+
 export const restaurantsPreFilter: Restaurant[] = [
   {
     position: 1,

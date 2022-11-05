@@ -43,7 +43,8 @@ module.exports = {
                     card: "260px",
                     pill: mainBtnSize,
                     "main-btn": mainBtnSize,
-                    "svg-icon": "10px"
+                    "svg-icon": "10px",
+                    "back-icon": "25px"
                 });
             },
             height: {
@@ -52,7 +53,8 @@ module.exports = {
                 "main-btn": "50px",
                 pill: "32px",
                 "svg-icon": "10px",
-                footer: "5rem"
+                footer: "5rem",
+                "back-icon": "25px"
             },
             padding: {
                 card: "0.5rem",

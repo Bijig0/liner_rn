@@ -46,6 +46,7 @@ module.exports = {
         pill: mainBtnSize,
         "main-btn": mainBtnSize,
         "svg-icon": "10px",
+        "back-icon": "25px",
       }),
       height: {
         card: "193px",
@@ -54,6 +55,7 @@ module.exports = {
         pill: "32px",
         "svg-icon": "10px",
         footer: "5rem",
+        "back-icon": "25px",
       },
       padding: {
         card: "0.5rem",
@@ -66,7 +68,6 @@ module.exports = {
       inset: ({ theme }) => ({
         pill: theme("padding.card"),
         "app-box": theme("padding.app-box"),
-        
       }),
       aspectRatio: {
         1: 1,

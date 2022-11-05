@@ -11,4 +11,13 @@ const generateFontsByPathObj = (
   return obj;
 };
 
+const fn = () => {
+  console.log('hello')
+}
+
+// GOOGLE UP ON LOOPING THROUGH REQUIRE
+const myFonts = generateFontsByPathObj(["DMSans-Bold", "DMSans-BoldItalic"], '../assets/fonts')
+fn()
+console.log('abc')
+
 export default generateFontsByPathObj;
