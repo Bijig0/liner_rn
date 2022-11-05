@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "types": ["jest", "node"],
+    "target": "ES2015",
+    "module": "commonjs",
+    "outDir": "out/out",
+    "sourceMap": true,
+    "paths": {
+        "shared/*": ["../types/*"]
+    }
+  },
+  "include": ["../types/*"]
+}

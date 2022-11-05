@@ -27,6 +27,6 @@ declare global {
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends TRootParamList
+    interface RootParamList extends TRootParamList {}
   }
 }
