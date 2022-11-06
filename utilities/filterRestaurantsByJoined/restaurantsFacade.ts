@@ -44,22 +44,21 @@ const data = [
 ];
 
 // Expected output is to return just the list inside data
-export const toRestaurantsArray = (initialRestaurantsData: Restaurant[]) => {
-  const allRestaurantNames: any = [];
+export const toRestaurantsArray = (
+  initialRestaurantsData: readonly Restaurant[]
+): Array<Array<RestaurantDetails>> => {
+  const allRestaurantNames = [];
   for (const eachRestaurantData of initialRestaurantsData) {
     const [restaurants] = eachRestaurantData.data;
-    const restaurantNames = restaurants.map(
-      ({ restaurantName }) => restaurantName
-    );
-    allRestaurantNames.push(restaurantNames);
+    allRestaurantNames.push(restaurants);
   }
   return allRestaurantNames;
 };
 
 export const fromRestaurantsArray = (
   restaurantsArray: any[],
-  initialRestaurantsData: any[]
-) => {
+  initialRestaurantsData: readonly Restaurant[]
+):Restaurant[] => {
   const reconstructedRestaurantsData: any = [];
   for (const [restaurantNestedArray, eachRestaurantData] of zip(
     restaurantsArray,
@@ -72,7 +71,6 @@ export const fromRestaurantsArray = (
     )) {
       dataProperty.push({
         ...eachRestaurantsInnerData,
-        restaurantName: restaurantName,
       });
     }
     const myTotal = { ...eachRestaurantData, data: [dataProperty] };
@@ -81,7 +79,11 @@ export const fromRestaurantsArray = (
   return reconstructedRestaurantsData;
 };
 
-const restoArray = toRestaurantsArray(data);
-const filteredArray = restoArray.filter((arr:string[]) => arr.includes("Tonkotsu"))
-const reconstructedArray = fromRestaurantsArray(filteredArray, data);
-console.log(reconstructedArray)
+if (require.main === module) {
+  const restoArray = toRestaurantsArray(data);
+  const filteredArray = restoArray.filter((arr: RestaurantDetails[]) =>
+    arr.some((restaurantDetail) => Object.values(restaurantDetail).includes("Tonkotsu")))
+  );
+  const reconstructedArray = fromRestaurantsArray(filteredArray, data);
+  console.log(reconstructedArray);
+}

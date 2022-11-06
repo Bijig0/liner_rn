@@ -9,7 +9,7 @@
       "program": "${file}",
       "request": "launch",
       "skipFiles": ["<node_internals>/**"],
-      "preLaunchTask": "tsc: build - utilities/tsconfig.json",
+      "preLaunchTask": "tsc: watch - utilities/tsconfig.json",
       "type": "node"
     },
 

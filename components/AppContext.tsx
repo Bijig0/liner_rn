@@ -2,17 +2,18 @@ import React, { createContext, useState, useEffect } from "react";
 import filterRestauransByJoined from "../utilities/filterRestaurantsByJoined/filterRestaurantsByJoined";
 import sectionData from "../mock_data/sections";
 import filterRestaurantsByInput from "../utilities/filterRestaurantsByInput/filterRestaurantsByInput";
+import {
+  toRestaurantsArray,
+  fromRestaurantsArray,
+} from "../utilities/filterRestaurantsByJoined/restaurantsFacade";
 
 type TAppContext = {
-  unmodifiedRestaurants: readonly Restaurant[];
-  setUnmodifiedRestaurants: React.Dispatch<
-    React.SetStateAction<readonly Restaurant[]>
-  >;
-  joinedRestaurants: readonly string[];
+  // Make this use the same syntax
+  restaurantsArray: RestaurantDetails[][];
   setJoinedRestaurants: React.Dispatch<React.SetStateAction<string[]>>;
   restaurantsToDisplay: readonly Restaurant[];
-  textToFilterBy: string;
   setTextToFilterBy: React.Dispatch<React.SetStateAction<string>>;
+  textToFilterBy: string;
 };
 
 // Fix your architecture for this. This means that for every filter you need to add a new thing
@@ -27,20 +28,16 @@ export const AppContext = createContext<TAppContext>({} as TAppContext);
 
 // GOAL: Make the filterRestaurant functions all use the toArray thingo
 
-
 const AppProvider = (props) => {
   const [unmodifiedRestaurants, setUnmodifiedRestaurants] =
     useState<readonly Restaurant[]>(sectionData);
-  
-  // HERE CALL THE TORESTAURANTARRAY FUNCTION
-
-  // ALL THE FILTERRESTAURANT FUNCTIONS SHOULD JUST FILTER AN ARRAY NORMALLY
-  
   const [joinedRestaurants, setJoinedRestaurants] = useState<string[]>([]);
   const [textToFilterBy, setTextToFilterBy] = useState("");
 
+  const restaurantsArray = toRestaurantsArray(unmodifiedRestaurants);
+
   const filteredRestaurantsByJoined = filterRestauransByJoined(
-    unmodifiedRestaurants,
+    restaurantsArray,
     joinedRestaurants
   );
 
@@ -51,28 +48,19 @@ const AppProvider = (props) => {
   // Use some sort of function composition here to put everything through every filter
   // Then display that final thing :)
 
-
-  // THE FINALE HERE IS FROMRESTAURANTS
-  const restaurantsToDisplay = filteredRestaurantsByInput;
-
-  // console.log(filteredRestaurantsByJoined[0].data)
-
-  // useEffect(() => {
-  //   const data = sectionData;
-
-  //   setUnmodifiedRestaurants(data);
-  // }, []);
+  const restaurantsToDisplay = fromRestaurantsArray(
+    filteredRestaurantsByInput,
+    unmodifiedRestaurants
+  );
 
   return (
     <AppContext.Provider
       value={{
-        unmodifiedRestaurants,
-        setUnmodifiedRestaurants,
-        joinedRestaurants,
+        restaurantsArray,
         setJoinedRestaurants,
         restaurantsToDisplay,
-        textToFilterBy,
         setTextToFilterBy,
+        textToFilterBy,
       }}
     >
       {props.children}

@@ -1,24 +1,16 @@
-import filterIndividualSectionByJoined from "./helper";
-
 const filterRestaurantsByJoined = (
-  restaurantsToFilter: any,
-  restaurantsToFilterBy: any
+  restaurantsArray: Array<Array<RestaurantDetails>>,
+  joinedRestaurants: string[]
 ) => {
-  let filteredRestaurantsByJoined: any = [];
-  for (const section of restaurantsToFilter) {
-    const [restaurants] = section.data;
-    //   restaurants is the object
-    filteredRestaurantsByJoined = [
-      ...filteredRestaurantsByJoined,
-      {
-        ...section,
-        data: [
-          filterIndividualSectionByJoined(restaurants, restaurantsToFilterBy),
-        ],
-      },
-    ];
+  let newRestaurantsArray: RestaurantDetails[] = [];
+  for (const restaurants of restaurantsArray) {
+    for (const restaurant of restaurants) {
+      const { restaurantName } = restaurant;
+      const joined = joinedRestaurants.includes(restaurantName)
+      newRestaurantsArray = [...newRestaurantsArray, { ...restaurant, joined }];
+    }
   }
-  return filteredRestaurantsByJoined;
+  return [newRestaurantsArray];
 };
 
 export default filterRestaurantsByJoined;

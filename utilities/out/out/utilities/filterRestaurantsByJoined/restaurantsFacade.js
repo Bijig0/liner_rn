@@ -52,8 +52,7 @@ const toRestaurantsArray = (initialRestaurantsData) => {
     const allRestaurantNames = [];
     for (const eachRestaurantData of initialRestaurantsData) {
         const [restaurants] = eachRestaurantData.data;
-        const restaurantNames = restaurants.map(({ restaurantName }) => restaurantName);
-        allRestaurantNames.push(restaurantNames);
+        allRestaurantNames.push(restaurants);
     }
     return allRestaurantNames;
 };
@@ -63,7 +62,7 @@ const fromRestaurantsArray = (restaurantsArray, initialRestaurantsData) => {
     for (const [restaurantNestedArray, eachRestaurantData] of (0, zip_1.default)(restaurantsArray, initialRestaurantsData)) {
         const dataProperty = [];
         for (const [restaurantName, eachRestaurantsInnerData] of (0, zip_1.default)(restaurantNestedArray, eachRestaurantData.data[0])) {
-            dataProperty.push(Object.assign(Object.assign({}, eachRestaurantsInnerData), { restaurantName: restaurantName }));
+            dataProperty.push(Object.assign({}, eachRestaurantsInnerData));
         }
         const myTotal = Object.assign(Object.assign({}, eachRestaurantData), { data: [dataProperty] });
         reconstructedRestaurantsData.push(myTotal);
@@ -71,8 +70,11 @@ const fromRestaurantsArray = (restaurantsArray, initialRestaurantsData) => {
     return reconstructedRestaurantsData;
 };
 exports.fromRestaurantsArray = fromRestaurantsArray;
-const restoArray = (0, exports.toRestaurantsArray)(data);
-const filteredArray = restoArray.filter((arr) => arr.includes("Tonkotsu"));
-const reconstructedArray = (0, exports.fromRestaurantsArray)(filteredArray, data);
-console.log(reconstructedArray);
+if (require.main === module) {
+    const restoArray = (0, exports.toRestaurantsArray)(data);
+    const filteredArray = restoArray.filter((arr) => arr.some((restaurantDetail) => Object.values(restaurantDetail).includes("Tonkotsu")));
+    ;
+    const reconstructedArray = (0, exports.fromRestaurantsArray)(filteredArray, data);
+    console.log(reconstructedArray);
+}
 //# sourceMappingURL=restaurantsFacade.js.map
