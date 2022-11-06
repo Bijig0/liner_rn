@@ -8,9 +8,8 @@
       "name": "Launch Program",
       "program": "${file}",
       "request": "launch",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
+      "skipFiles": ["<node_internals>/**"],
+      "preLaunchTask": "tsc: build - utilities/tsconfig.json",
       "type": "node"
     },
 

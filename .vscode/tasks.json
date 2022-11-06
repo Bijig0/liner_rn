@@ -1,0 +1,16 @@
+{
+    "tasks": [
+        {
+            "type": "typescript",
+            "tsconfig": "utilities/tsconfig.json",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "label": "tsc: build - utilities/tsconfig.json"
+        }
+    ]
+}

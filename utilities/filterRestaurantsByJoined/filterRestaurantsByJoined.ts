@@ -1,7 +1,6 @@
-import symmetricDifference from "../symmetricDifference/symmetricDifference";
 import filterIndividualSectionByJoined from "./helper";
 
-const filterRestaurantsByJoinedByJoined = (
+const filterRestaurantsByJoined = (
   restaurantsToFilter: any,
   restaurantsToFilterBy: any
 ) => {
@@ -22,4 +21,4 @@ const filterRestaurantsByJoinedByJoined = (
   return filteredRestaurantsByJoined;
 };
 
-export default filterRestaurantsByJoinedByJoined;
+export default filterRestaurantsByJoined;

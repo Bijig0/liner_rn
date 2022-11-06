@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const helper_1 = __importDefault(require("./helper"));
-const filterRestaurantsByJoinedByJoined = (restaurantsToFilter, restaurantsToFilterBy) => {
+const filterRestaurantsByJoined = (restaurantsToFilter, restaurantsToFilterBy) => {
     let filteredRestaurantsByJoined = [];
     for (const section of restaurantsToFilter) {
         const [restaurants] = section.data;
@@ -18,5 +18,5 @@ const filterRestaurantsByJoinedByJoined = (restaurantsToFilter, restaurantsToFil
     }
     return filteredRestaurantsByJoined;
 };
-exports.default = filterRestaurantsByJoinedByJoined;
+exports.default = filterRestaurantsByJoined;
 //# sourceMappingURL=filterRestaurantsByJoined.js.map

@@ -20,15 +20,24 @@ type TAppContext = {
 
 export const AppContext = createContext<TAppContext>({} as TAppContext);
 
-//  
+// Currently the workflow to add a new filtr is
+// 1. Add a filtering thing in the component where you wanna filter
+// 2. Add new state to the provider
+// 3. In the provider call the function
+
+// GOAL: Make the filterRestaurant functions all use the toArray thingo
+
 
 const AppProvider = (props) => {
   const [unmodifiedRestaurants, setUnmodifiedRestaurants] =
     useState<readonly Restaurant[]>(sectionData);
+  
+  // HERE CALL THE TORESTAURANTARRAY FUNCTION
+
+  // ALL THE FILTERRESTAURANT FUNCTIONS SHOULD JUST FILTER AN ARRAY NORMALLY
+  
   const [joinedRestaurants, setJoinedRestaurants] = useState<string[]>([]);
   const [textToFilterBy, setTextToFilterBy] = useState("");
-
-  // The empty array as second argument should be the joined restaurants we have in the provider
 
   const filteredRestaurantsByJoined = filterRestauransByJoined(
     unmodifiedRestaurants,
@@ -41,6 +50,9 @@ const AppProvider = (props) => {
   );
   // Use some sort of function composition here to put everything through every filter
   // Then display that final thing :)
+
+
+  // THE FINALE HERE IS FROMRESTAURANTS
   const restaurantsToDisplay = filteredRestaurantsByInput;
 
   // console.log(filteredRestaurantsByJoined[0].data)
