@@ -2,15 +2,15 @@ const filterRestaurantsByJoined = (
   restaurantsArray: Array<Array<RestaurantDetails>>,
   joinedRestaurants: string[]
 ): Array<Array<RestaurantDetails>> => {
-  let newRestaurantsArray: RestaurantDetails[] = [];
+  const newRestaurantsArray: RestaurantDetails[][] = [];
   for (const restaurants of restaurantsArray) {
-    const temp = [];
+    const restaurantsDetails: RestaurantDetails[] = [];
     for (const restaurant of restaurants) {
       const { restaurantName } = restaurant;
       const joined = joinedRestaurants.includes(restaurantName);
-      temp.push({ ...restaurant, joined });
+      restaurantsDetails.push({ ...restaurant, joined });
     }
-    newRestaurantsArray.push(temp);
+    newRestaurantsArray.push(restaurantsDetails);
   }
   return newRestaurantsArray;
 };

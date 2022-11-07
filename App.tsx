@@ -73,21 +73,15 @@ export default function App() {
             }}
             backBehavior="order"
           >
-            <Tab.Screen
-              name="Home"
-              component={Home}
-              navigationKey="Home-1"
-            />
+            <Tab.Screen name="Home" component={Home} navigationKey="Home-1" />
             <Tab.Screen
               name="MyQueues"
               component={MyQueuesScreen}
               navigationKey="MyQueues"
+              options={{
+                lazy: false,
+              }}
             />
-            <Tab.Screen
-              name="RestaurantDetails"
-              component={RestaurantDetails}
-              initialParams={{ type: "none" }}
-            ></Tab.Screen>
             <Tab.Screen name="Profile" component={Profile} />
           </Tab.Navigator>
         </NavigationContainer>

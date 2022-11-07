@@ -22,7 +22,8 @@ import HomeHeader from "../components/HomeScreen/HomeHeader";
 import BottomScreenPadding from "../components/generic_components/BottomScreenPadding";
 import { useNavigation, useNavigationState } from "@react-navigation/native";
 import { AppContext } from "../components/AppContext";
-import Header from '../components/Header'
+import Header from "../components/Header";
+import ScrollAppBox from "../components/generic_components/ScrollAppBox";
 
 type Props = {
   navigation: any;

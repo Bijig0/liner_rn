@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useMemo } from "react";
 import filterRestauransByJoined from "../utilities/filterRestaurantsByJoined/filterRestaurantsByJoined";
 import sectionData from "../mock_data/sections";
 import filterRestaurantsByInput from "../utilities/filterRestaurantsByInput/filterRestaurantsByInput";
@@ -34,7 +34,12 @@ const AppProvider = (props) => {
   const [joinedRestaurants, setJoinedRestaurants] = useState<string[]>([]);
   const [textToFilterBy, setTextToFilterBy] = useState("");
 
-  const restaurantsArray = toRestaurantsArray(unmodifiedRestaurants);
+  const restaurantsArray = useMemo(
+    () => toRestaurantsArray(unmodifiedRestaurants),
+    [unmodifiedRestaurants]
+  );
+
+  // Put a monad here for positioning the filter functions
 
   const filteredRestaurantsByJoined = filterRestauransByJoined(
     restaurantsArray,

@@ -24,7 +24,6 @@ const Home = (props: Props) => {
         component={RestaurantDetails}
         options={{
           header: Header
-       
         }}
       />
     </Stack.Navigator>
