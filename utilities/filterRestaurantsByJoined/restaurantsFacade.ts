@@ -56,21 +56,21 @@ export const toRestaurantsArray = (
 };
 
 export const fromRestaurantsArray = (
-  restaurantsArray: any[],
+  restaurantsArray: RestaurantDetails[][],
   initialRestaurantsData: readonly Restaurant[]
-):Restaurant[] => {
+): Restaurant[] => {
   const reconstructedRestaurantsData: any = [];
   for (const [restaurantNestedArray, eachRestaurantData] of zip(
     restaurantsArray,
     initialRestaurantsData
   )) {
     const dataProperty: any = [];
-    for (const [restaurantName, eachRestaurantsInnerData] of zip(
+    for (const [restaurantDetail, eachRestaurantsInnerData] of zip(
       restaurantNestedArray,
       eachRestaurantData.data[0]
     )) {
       dataProperty.push({
-        ...eachRestaurantsInnerData,
+        ...restaurantDetail,
       });
     }
     const myTotal = { ...eachRestaurantData, data: [dataProperty] };
@@ -82,7 +82,9 @@ export const fromRestaurantsArray = (
 if (require.main === module) {
   const restoArray = toRestaurantsArray(data);
   const filteredArray = restoArray.filter((arr: RestaurantDetails[]) =>
-    arr.some((restaurantDetail) => Object.values(restaurantDetail).includes("Tonkotsu")))
+    arr.some((restaurantDetail) =>
+      Object.values(restaurantDetail).includes("Tonkotsu")
+    )
   );
   const reconstructedArray = fromRestaurantsArray(filteredArray, data);
   console.log(reconstructedArray);

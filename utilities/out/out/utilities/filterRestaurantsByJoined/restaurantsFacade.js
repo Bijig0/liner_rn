@@ -61,8 +61,8 @@ const fromRestaurantsArray = (restaurantsArray, initialRestaurantsData) => {
     const reconstructedRestaurantsData = [];
     for (const [restaurantNestedArray, eachRestaurantData] of (0, zip_1.default)(restaurantsArray, initialRestaurantsData)) {
         const dataProperty = [];
-        for (const [restaurantName, eachRestaurantsInnerData] of (0, zip_1.default)(restaurantNestedArray, eachRestaurantData.data[0])) {
-            dataProperty.push(Object.assign({}, eachRestaurantsInnerData));
+        for (const [restaurantDetail, eachRestaurantsInnerData] of (0, zip_1.default)(restaurantNestedArray, eachRestaurantData.data[0])) {
+            dataProperty.push(Object.assign({}, restaurantDetail));
         }
         const myTotal = Object.assign(Object.assign({}, eachRestaurantData), { data: [dataProperty] });
         reconstructedRestaurantsData.push(myTotal);
@@ -73,7 +73,6 @@ exports.fromRestaurantsArray = fromRestaurantsArray;
 if (require.main === module) {
     const restoArray = (0, exports.toRestaurantsArray)(data);
     const filteredArray = restoArray.filter((arr) => arr.some((restaurantDetail) => Object.values(restaurantDetail).includes("Tonkotsu")));
-    ;
     const reconstructedArray = (0, exports.fromRestaurantsArray)(filteredArray, data);
     console.log(reconstructedArray);
 }
