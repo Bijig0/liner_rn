@@ -9,14 +9,12 @@ type Props = {
   imgSrc: URL;
 };
 
-// DEBUG THIS SOMETIME LATER, FOR SOME REASON THERE IS A BUG THAT MAKES IT UNDEFINED
-
 const RestaurantImg = (props: Props) => {
-
-  if (typeof props.imgSrc == 'undefined') {
-    return <View style={tw`flex-1 h-[50px] bg-white`}></View>
+  // DEBUG THIS SOMETIME LATER, FOR SOME REASON THERE IS A BUG THAT MAKES IT UNDEFINED
+  if (typeof props.imgSrc == "undefined") {
+    return <View style={tw`flex-1 h-[50px] bg-white`}></View>;
   }
- 
+
   return (
     <View style={tw`flex-2 relative`}>
       <Image source={{ uri: props.imgSrc.href }} style={tw`flex-1 w-full`} />

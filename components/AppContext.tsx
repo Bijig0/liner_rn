@@ -7,6 +7,7 @@ import {
   fromRestaurantsArray,
 } from "../utilities/filterRestaurantsByJoined/restaurantsFacade";
 
+
 type TAppContext = {
   // Make this use the same syntax
   restaurantsArray: RestaurantDetails[][];
@@ -58,6 +59,8 @@ const AppProvider = (props) => {
     filteredRestaurantsByInput,
     unmodifiedRestaurants
   );
+
+  
 
   return (
     <AppContext.Provider

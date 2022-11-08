@@ -29,7 +29,7 @@ type Props = {
   navigation: any;
 };
 
-const RestaurantList = (props: Props) => {
+const  RestaurantList = (props: Props) => {
   const context = useContext(AppContext);
   const data = context.restaurantsToDisplay;
 

@@ -2,10 +2,6 @@
   "compilerOptions": {
     "strict": true,
     "types": ["jest", "node"]
-    // "target": "ES2015",
-    // "module": "commonjs",
-    // "outDir": "out",
-    // "sourceMap": true,
   },
   "exclude": [
     "typings/browser.d.ts",
@@ -15,6 +11,11 @@
     "expo/tsconfig.base",
     "typings"
   ],
-  "include": ["__tests__/*.ts", "__tests__/*.tsx", "./types/*"],
+  "include": [
+    "__tests__/*.ts",
+    "__tests__/*.tsx",
+    "./types/*",
+    "types/global.d.ts"
+  ],
   "extends": "expo/tsconfig.base"
 }

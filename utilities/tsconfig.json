@@ -9,5 +9,5 @@
     "jsx": "react-native",
     "esModuleInterop": true
   },
-  "include": ["../types/global.d.ts", "./**/*"]
+  "include": ["../types/global.d.ts", "./**/*", "../types/*"]
 }
