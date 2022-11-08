@@ -11,12 +11,13 @@ import QueueDetailsImg from "./QueueDetailsScreen/QueueDetailsImg";
 type Props = {
   route?: any;
   children: React.ReactNode;
+  imgSrc: URL
 };
 
 const QueueDetailsContainer = (props: Props) => {
   return (
     <View>
-      <QueueDetailsImg />
+      <QueueDetailsImg imgSrc={ props.imgSrc} />
       {props.children}
       <QueueDetailsInfoCardContainer />
       <ChatWithUsButton />

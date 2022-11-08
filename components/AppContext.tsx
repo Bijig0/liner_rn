@@ -10,6 +10,7 @@ import {
 type TAppContext = {
   // Make this use the same syntax
   restaurantsArray: RestaurantDetails[][];
+  joinedRestaurants: string[];
   setJoinedRestaurants: React.Dispatch<React.SetStateAction<string[]>>;
   restaurantsToDisplay: readonly Restaurant[];
   setTextToFilterBy: React.Dispatch<React.SetStateAction<string>>;
@@ -62,6 +63,7 @@ const AppProvider = (props) => {
     <AppContext.Provider
       value={{
         restaurantsArray,
+        joinedRestaurants,
         setJoinedRestaurants,
         restaurantsToDisplay,
         setTextToFilterBy,

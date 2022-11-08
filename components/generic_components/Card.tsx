@@ -2,7 +2,6 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import tw from "../../lib/tailwind";
 import RestaurantImg from "../RestaurantCard/components/RestaurantImg";
-import MainButton from "./Button";
 
 type Props = {
   onPress?: () => void;
@@ -12,6 +11,7 @@ type Props = {
   Button?: any;
   cardProportions: string;
   buttonProps?: object;
+  imgSrc: URL;
 };
 
 const RestaurantCard = (props: Props) => {
@@ -20,7 +20,7 @@ const RestaurantCard = (props: Props) => {
       onPress={props.onPress ? props.onPress : () => false}
       style={tw`${props.cardProportions} bg-white rounded-xl overflow-hidden mr-5`}
     >
-      <RestaurantImg />
+      <RestaurantImg imgSrc={props.imgSrc} />
       {/* Get rid of this additional div */}
       <View style={tw`flex-1`}>
         <View style={tw`${props.textBoxLayout}`}>

@@ -5,19 +5,22 @@ const DATA = [
     data: [
       [
         {
-          key: 1,
+          id: 1,
           restaurantName: "Tonkotsu",
           joined: false,
+          imgSrc: "https://source.unsplash.com/1600x900/?sky",
         },
         {
-          key: 2,
+          id: 2,
           restaurantName: "BurgerVille",
           joined: false,
+          imgSrc: "https://source.unsplash.com/1600x900/?nature",
         },
         {
-          key: 3,
+          id: 3,
           restaurantName: "Fried Fries",
           joined: false,
+          imgSrc: "https://source.unsplash.com/1600x900/?water",
         },
       ],
     ],
@@ -28,19 +31,22 @@ const DATA = [
     data: [
       [
         {
-          key: 4,
+          id: 4,
           restaurantName: "Seoreni",
           joined: false,
+          imgSrc: "https://source.unsplash.com/1600x900/?cave",
         },
         {
-          key: 5,
+          id: 5,
           restaurantName: "Jinmu",
           joined: false,
+          imgSrc: "https://source.unsplash.com/1600x900/?cavern",
         },
         {
-          key: 6,
+          id: 6,
           restaurantName: "Balai Lombok",
           joined: false,
+          imgSrc: "https://source.unsplash.com/1600x900/?land",
         },
       ],
     ],
@@ -51,19 +57,22 @@ const DATA = [
     data: [
       [
         {
-          key: 7,
+          id: 7,
           restaurantName: "Sushi Jiro",
           joined: false,
+          imgSrc: "https://source.unsplash.com/1600x900/?hill",
         },
         {
-          key: 8,
+          id: 8,
           restaurantName: "HeroFood",
           joined: false,
+          imgSrc: "https://source.unsplash.com/1600x900/?mountain",
         },
         {
-          key: 9,
+          id: 9,
           restaurantName: "Uncle Roger's Chicken",
           joined: false,
+          imgSrc: "https://source.unsplash.com/1600x900/?field",
         },
       ],
     ],

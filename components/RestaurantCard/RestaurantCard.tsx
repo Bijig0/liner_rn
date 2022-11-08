@@ -9,17 +9,23 @@ import { TabActions, useNavigation } from "@react-navigation/native";
 type Props = {
   restaurantName: string;
   joined: boolean;
+  imgSrc: URL
 };
 
-const RestaurantCard = (props: Props) => {
+const  RestaurantCard = (props: Props) => {
   const navigation = useNavigation();
-  const JumpToRestaurantDetails = TabActions.jumpTo("RestaurantDetails", {
-    restaurantName: props.restaurantName,
-    type: "viewDetails",
-  });
   return (
     <Card
-      onPress={() => navigation.dispatch(JumpToRestaurantDetails)}
+      imgSrc={props.imgSrc}
+      onPress={() =>
+        navigation.navigate("Home", {
+          screen: "RestaurantDetails",
+          params: {
+            restaurantName: props.restaurantName,
+            type: "viewDetails",
+          },
+        })
+      }
       cardProportions={"w-card h-card"}
       label={props.restaurantName}
       subLabel="Brighton Vic"
@@ -28,6 +34,7 @@ const RestaurantCard = (props: Props) => {
       buttonProps={{
         restaurantName: props.restaurantName,
         joined: props.joined,
+        imgSrc: props.imgSrc
       }}
     />
   );

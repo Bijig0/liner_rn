@@ -11,30 +11,28 @@ type Props = {
 };
 
 const Footer = (props: Props) => {
-  const jumpToHome = TabActions.jumpTo("Home");
-  const jumpToMyQueues = TabActions.jumpTo("MyQueues");
-  const jumpToMyProfile = TabActions.jumpTo("Profile");
-
   const footerIcons = [
     {
       position: 1,
       Icon: RawHomeIcon,
       onPress: () => {
-        props.navigation.dispatch(jumpToHome);
+        props.navigation.navigate("Home", {
+          screen: "RestaurantList",
+        });
       },
     },
     {
       position: 2,
       Icon: RawSearchIcon,
       onPress: () => {
-        props.navigation.dispatch(jumpToMyProfile);
+        props.navigation.navigate("MyQueues");
       },
     },
     {
       position: 3,
       Icon: RawTechIcon,
       onPress: () => {
-        props.navigation.dispatch(jumpToMyQueues);
+        props.navigation.navigate("Profile");
       },
     },
   ];

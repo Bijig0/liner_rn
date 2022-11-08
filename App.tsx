@@ -9,8 +9,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MyQueuesScreen from "./screens/MyQueues";
 import QueueDetails from "./components/QueueDetailsContainer";
 import AppProvider from "./components/AppContext";
-import RestaurantDetails from "./screens/RestaurantDetails";
-import Home from "./screens/Home";
+import RestaurantDetails from "./screens/Home/screens/RestaurantDetails";
+import Home from "./screens/Home/Home";
 
 // import generateFontsByPathObj from "./utilities/generateFontsByPathObj";
 

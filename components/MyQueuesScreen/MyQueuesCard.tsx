@@ -5,12 +5,14 @@ import { useNavigation } from "@react-navigation/native";
 
 type Props = {
   restaurantName: string;
+  imgSrc: URL
 };
 
 const MyQueuesCard = (props: Props) => {
   const navigation = useNavigation();
   return (
     <Card
+      imgSrc={props.imgSrc}
       onPress={() =>
         // Fix type hinting for this..rn I cant be fucked
         navigation.navigate("Home", {
@@ -18,6 +20,7 @@ const MyQueuesCard = (props: Props) => {
           params: {
             restaurantName: props.restaurantName,
             type: "queueDetails",
+            imgSrc: props.imgSrc
           },
         })
       }

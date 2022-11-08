@@ -10,8 +10,6 @@ import AppBox from "../components/generic_components/AppBox";
 import MyQueuesCard from "../components/MyQueuesScreen/MyQueuesCard";
 import MyQueuesHeading from "../components/MyQueuesScreen/MyQueuesHeading";
 import { AppContext } from "../components/AppContext";
-import tw from "../lib/tailwind";
-import { useNavigation, TabActions } from "@react-navigation/native";
 
 type Props = {};
 
@@ -22,10 +20,10 @@ const MyQueuesScreen = (props: Props) => {
     <AppBox>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={context.joinedRestaurants}
+        data={context.restaurantsArray[0]}
         ListHeaderComponent={() => <MyQueuesHeading />}
-        renderItem={({ item }) => {
-          return <MyQueuesCard restaurantName={item} />;
+        renderItem={({ item: {restaurantName, imgSrc } }) => {
+          return <MyQueuesCard imgSrc={new URL(imgSrc)} restaurantName={restaurantName} />;
         }}
       />
     </AppBox>

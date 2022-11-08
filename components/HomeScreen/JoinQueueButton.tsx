@@ -35,16 +35,6 @@ const JoinQueueButton = (props: Props) => {
   const nonPressedButton = (
     <Button
       textColor="text-white"
-      // onPress={() => {
-      //   navigation.navigate("QueueDetails", {
-      //     restaurantName: props.buttonProps.restaurantName,
-      //   });
-
-      //   context.setJoinedRestaurants((joinedRestaurants) => {
-      //     // console.log(props.buttonProps.restaurantName);
-      //     return [...joinedRestaurants, props.buttonProps.restaurantName];
-      //   });
-      // }}
       onPress={() => {
         setTimeout(() => {
           context.setJoinedRestaurants((joinedRestaurants) => {
@@ -57,6 +47,7 @@ const JoinQueueButton = (props: Props) => {
           restaurantName: props.buttonProps.restaurantName,
           // setPressed: setPressed,
           type: "queueDetails",
+          imgSrc: props.buttonProps.imgSrc
         });
 
         // setPressed(true);
