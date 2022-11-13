@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const filterRestaurantsByJoined = (restaurantsArray, joinedRestaurants) => {
-    let newRestaurantsArray = [];
+    const newRestaurantsArray = [];
     for (const restaurants of restaurantsArray) {
-        const temp = [];
+        const restaurantsDetails = [];
         for (const restaurant of restaurants) {
             const { restaurantName } = restaurant;
             const joined = joinedRestaurants.includes(restaurantName);
-            temp.push(Object.assign(Object.assign({}, restaurant), { joined }));
+            restaurantsDetails.push(Object.assign(Object.assign({}, restaurant), { joined }));
         }
-        newRestaurantsArray.push(temp);
+        newRestaurantsArray.push(restaurantsDetails);
     }
     return newRestaurantsArray;
 };

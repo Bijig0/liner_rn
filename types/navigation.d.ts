@@ -1,6 +1,5 @@
 import { NavigatorScreenParams } from '@react-navigation/native';
 
-// change joinQueue to restaurantDetails
 type CardViewType = "queueDetails" | "restaurantDetails" | "none";
 
 declare global {
@@ -9,15 +8,22 @@ declare global {
     setPressed?: any;
     restaurantName: string;
     type: CardViewType;
+    imgSrc: URL
   };
 }
 
-type TRootParamList = {
-  Home: undefined;
-  MyQueues: undefined;
+type HomeStackParamList = {
   RestaurantDetails: QueueDetailsParams | undefined;
+  RestaurantList: undefined;
+};
+
+type TRootParamList = {
+  Home: NavigatorScreenParams<HomeStackParamList>;
+  MyQueues: undefined;
   Profile: undefined;
-  RestaurantList: undefined,
+  // Find a way to delete these below types, right now it throws an error
+  RestaurantDetails: QueueDetailsParams | undefined;
+  RestaurantList: undefined;
 };
 
 declare global {

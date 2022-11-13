@@ -7,6 +7,16 @@
       "problemMatcher": ["$tsc-watch"],
       "group": "build",
       "label": "tsc: watch - utilities/tsconfig.json"
-    }
+    },
+  {
+    "label": "Watch TS for whole repo",
+    "command": "tsc",
+    "type": "shell",
+    "args": ["-p", "."],
+    "presentation": {
+      "reveal": "silent"
+    },
+    "problemMatcher": "$tsc"
+  }
   ]
 }
